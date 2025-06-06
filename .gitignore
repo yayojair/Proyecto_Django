@@ -1,0 +1,34 @@
+# Django
+*.pyc
+__pycache__/
+db.sqlite3
+/static/
+media/
+.env
+
+# VS Code o PyCharm
+.vscode/
+.idea/
+
+# Entornos virtuales
+venv/
+.env/
+.envrc
+
+# Archivos de migraciones (opcional ignorar individualmente)
+*/migrations/__pycache__/
+
+# Pycache
+__pycache__/
+*.py[cod]
+
+# Migraciones temporales (opcional ignorar las auto-generadas)
+**/migrations/__pycache__/
+
+# Azurite local files
+__azurite_db_blob_extent__
+__azurite_db_queue_extent__
+__azurite_db_table_extent__
+
+# Otros archivos de Azurite
+*.log

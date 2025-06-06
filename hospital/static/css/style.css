@@ -1,0 +1,59 @@
+#contenedor{
+    width: 500px;
+    align-items: center;
+    background: lightcyan;
+}
+
+#enviar{
+    margin-left: 45%;
+    
+}
+
+#info_paciente{
+    display: none;
+    overflow-y: auto;
+    left: 250px;
+    position: absolute;
+    width: 800px;
+    height: 550px;
+    top: 50px;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 5px;
+}
+
+#actualizaPaciente{
+    display: none;
+    overflow-y: auto;
+    left: 250px;
+    position: absolute;
+    width: 800px;
+    height: 550px;
+    top: 50px;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    background: lightcyan;
+}
+
+#sintomas{
+    resize: none;
+}
+
+#notifications{
+    width: 450px;
+    height: 50px;
+    position: relative;
+    top:-220px;
+    left: 500px;
+    overflow-y:hidden;
+}
+#noti{
+    font-size: larger;
+    color: red;
+}
+
+
+.fila-paciente-activo{
+    outline: 2px solid skyblue;
+    outline-offset: -2px;
+}
+

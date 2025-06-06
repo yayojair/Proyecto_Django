@@ -1,0 +1,105 @@
+{% extends 'navegador.html' %}
+{% load static %}
+
+{% block title %}Registro de Pacientes{% endblock %}
+{% block content %}
+    <div class="container mt-3" id="contenedor">
+        <h2 class="mb-4">Registro de Paciente</h2>
+            
+        <form class="needs-validation" method="post" novalidate>
+            {% csrf_token %}
+            
+            <!-- Sección de datos personales -->
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Datos Personales</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="nombre" class="form-label">Nombre:</label>
+                            <input type="text" class="form-control" id="nombre" 
+                                   placeholder="Nombre del paciente" name="nombre" 
+                                   pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]+" required>
+                            <div class="invalid-feedback">Por favor ingrese un nombre válido (solo letras)</div>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label for="apellidos" class="form-label">Apellidos:</label>
+                            <input type="text" class="form-control" id="apellidos" 
+                                   placeholder="Apellidos del paciente" name="apellidos" 
+                                   pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]+" required>
+                            <div class="invalid-feedback">Por favor ingrese apellidos válidos (solo letras)</div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <label for="edad" class="form-label">Edad:</label>
+                            <input type="number" class="form-control" id="edad" 
+                                   placeholder="Edad" name="edad" min="0" max="120" required>
+                            <div class="invalid-feedback">La edad debe estar entre 0 y 120 años</div>
+                        </div>
+
+                        <div class="col-md-9 mb-3">
+                            <label class="form-label">Sexo:</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="genero" 
+                                       id="radio1" value="hombre" checked>
+                                <label class="form-check-label" for="radio1">Hombre</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="genero" 
+                                       id="radio2" value="mujer">
+                                <label class="form-check-label" for="radio2">Mujer</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="genero" 
+                                       id="radio3" value="otro">
+                                <label class="form-check-label" for="radio3">Otro/Prefiero no decir</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección de síntomas -->
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Información Médica</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label for="sintomas" class="form-label">Síntomas:</label>
+                        <textarea class="form-control" rows="5" id="sintomas" 
+                                  name="sintomas" placeholder="Describa los síntomas del paciente" 
+                                  required></textarea>
+                        <div class="invalid-feedback">Por favor describa los síntomas del paciente</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button type="reset" class="btn btn-outline-secondary me-md-2">Limpiar</button>
+                <button type="submit" class="btn btn-primary">Registrar Paciente</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script>
+        (() =>{
+            'use strict';
+            const forms = document.querySelectorAll('.needs-validation');
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event =>{
+                    if(!form.checkValidity()){
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        })();
+    </script>
+{% endblock %}
