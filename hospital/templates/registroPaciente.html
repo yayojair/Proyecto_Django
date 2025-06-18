@@ -66,22 +66,41 @@
             <!-- Sección de síntomas -->
             <div class="card mb-4">
                 <div class="card-header bg-primary text-white">
-                    <h5 class="mb-0">Información Médica</h5>
+                    <h5 class="mb-0">Consulta Medica</h5>
                 </div>
                 <div class="card-body">
+                    <div class="col-md-3 mb-3">
+                            <label for="peso" class="form-label">Peso:</label>
+                            <input type="number" class="form-control" id="peso" placeholder="Peso" name="peso" required>
+                            <input type="hidden" name="fecha" id="fecha">
+                    </div>
                     <div class="mb-3">
                         <label for="sintomas" class="form-label">Síntomas:</label>
                         <textarea class="form-control" rows="5" id="sintomas" 
                                   name="sintomas" placeholder="Describa los síntomas del paciente" 
                                   required></textarea>
-                        <div class="invalid-feedback">Por favor describa los síntomas del paciente</div>
+                        <div class="invalid-feedback">Por favor escriba los síntomas claves del paciente</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="receta" class="form-label">Medicamentos:</label>
+                        <textarea class="form-control" rows="5" id="sintomas" 
+                                  name="medicamentos" placeholder="Medicamentos" 
+                                  required></textarea>
+                        <div class="invalid-feedback">Por favor escriba los medicamento recetado al paciente</div>
+
+                    </div>
+                    <div class="mb-3">
+                        <label for="observacion" class="form-label">Observaciones o Instrucciones:</label>
+                        <textarea class="form-control" rows="5" id="sintomas" 
+                                  name="observaciones" placeholder="Observaciones o Instrucciones al paciente" 
+                                  required></textarea>
                     </div>
                 </div>
-            </div>
 
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <button type="reset" class="btn btn-outline-secondary me-md-2">Limpiar</button>
-                <button type="submit" class="btn btn-primary">Registrar Paciente</button>
+                <div class="d-flex justify-content-center gap-2">
+                    <button type="reset" class="btn btn-outline-secondary">Limpiar</button>
+                    <button type="submit" class="btn btn-primary">Registrar Paciente</button>
+                </div>
             </div>
         </form>
     </div>
@@ -97,9 +116,18 @@
                         event.preventDefault();
                         event.stopPropagation();
                     }
+                    const fecha = obtenFechaLocal();  // Fecha local en formato UTC
+                    document.getElementById("fecha").value = fecha;
                     form.classList.add('was-validated');
                 }, false);
             });
         })();
+
+        function obtenFechaLocal() {
+            const now = new Date();
+            const offset = now.getTimezoneOffset() * 60000; // en milisegundos
+            const localDate = new Date(now - offset);
+            return localDate.toISOString().slice(0, 19); // sin el sufijo "Z"
+        }
     </script>
 {% endblock %}

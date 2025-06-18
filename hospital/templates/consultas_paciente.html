@@ -1,0 +1,22 @@
+<h2>Detalles de {{ paciente.nombre }} {{ paciente.apellido }}</h2>
+<ul>
+  {% for consulta in consultas %}
+    <li style="margin-bottom: 10px;">
+      {{ consulta.fecha|date:"Y-m-d H:i" }} - {{ consulta.observacion }}
+      <button class="btn btn-primary btn-sm" type="button"
+              onclick="verConsulta(this)"
+              data-id="{{ consulta.id }}"
+              data-fecha="{{ consulta.fecha|date:'Y-m-d H:i' }}"
+              data-peso="{{ consulta.peso }}"
+              data-sintomas="{% for s in consulta.sintoma.all %}{{ s.nombre }}{% if not forloop.last %}, {% endif %}{% endfor %}"
+              data-medicamentos="{% for m in consulta.medicamento.all %}{{ m.nombre }}{% if not forloop.last %}, {% endif %}{% endfor %}"
+              data-observaciones="{{ consulta.observacion|default:'' }}">
+          Ver
+      </button>
+    </li>
+  {% empty %}
+    <li>No hay consultas registradas.</li>
+  {% endfor %}
+</ul>
+
+

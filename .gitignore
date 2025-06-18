@@ -32,3 +32,6 @@ __azurite_db_table_extent__
 
 # Otros archivos de Azurite
 *.log
+
+# Archivos de Azurite (Azure Storage Emulator)
+__azurite_db_*.json

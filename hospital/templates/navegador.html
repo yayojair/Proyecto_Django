@@ -12,7 +12,7 @@
 <body>
     <div class="container mt-3" id="nav">
         <ul class="nav nav-tabs">
-            {% if request.user.is_staff %}
+            {% if request.user.is_active %}
             <li class="nav-item">
             <a class="nav-link {% if request.resolver_match.url_name == 'registro-paciente' %}active{% endif %}" href="{% url 'registro-paciente' %}">Agregar Paciente</a>
             </li>
@@ -20,7 +20,10 @@
             <a class="nav-link {% if request.resolver_match.url_name == 'listar-pacientes' %}active{% endif %}" href="{% url 'listar-pacientes' %}">Listar Pacientes</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="{% url 'logout' %}">logout</a>
+            <a class="nav-link {% if request.resolver_match.url_name == 'nueva-consulta' %}active{% endif %}" href="{% url 'listar-pacientes' %}">Modificar Usuario</a>
+            </li>
+            <li class="nav-item ms-auto">
+            <a class="nav-link" href="{% url 'logout' %}">Salir</a>
             </li>
             {% endif %}
         </ul>

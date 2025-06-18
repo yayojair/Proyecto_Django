@@ -1,17 +1,7 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
-</head>
 {% extends 'navegador.html' %}
-{% load static %}
-
+{% block title %} Inicio {% endblock %}
 {% block content %}
-    <div>
-        <h3>Bienvenidos al hospitalGestion</h3>
+    <div style="position: relative; left: 150px;">
+        <h3 >Bienvenidos doctor {{ nombre_doctor }}</h3>
     </div>
 {% endblock %}
-
-</html>
